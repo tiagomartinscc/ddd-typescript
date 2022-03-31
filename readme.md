@@ -30,3 +30,33 @@ sudo npm i tslint --save-dev
 ```bash
 npx tslint --init
 ```
+
+## Configuração de teste
+
+### instalando o Jest
+```bash
+sudo npm i -D jest @types/jest ts-node
+```
+
+### instalando o SWC (Compilado da Vercel)
+```bash
+sudo npm i -D @swc/jest @swc/cli @swc/core
+```
+
+### iniciando com o Jest
+```bash
+npx jest --init
+```
+
+adicionando o transform no jest.config
+```json
+  transform: {
+    "^.+\.(t|j)sx?$": ["@swc/jest"]
+  },
+```
+
+rodando os testes
+
+```bash
+npm test
+```

@@ -1,16 +1,18 @@
-import OrderItem from "./ordem_item";
+import OrderItem from "./order_item";
 
 export default class Order {
-    _id: string;
+    private _id: string;
     // Agregado diferente usa o ID
-    _custumerId: string;
+    private _custumerId: string;
     // Mesmo agregado, usa o objeto
-    _items: OrderItem[];
+    private _items: OrderItem[];
+    private _total: number;
 
     constructor(id: string, custumerId:string, items: OrderItem[]) {
         this._id = id;
         this._custumerId = custumerId;
         this._items = items;
+        this._total = this.total();
         this.validate();
     }
 
@@ -24,9 +26,12 @@ export default class Order {
         }
 
         if (this._items.length === 0) {
-            throw new Error("Items is required");
+            throw new Error("Items are required");
         }
+    }
 
+    total(): number {
+        return this._items.reduce((acc, item) => acc + item._price, 0);
     }
 
 }

@@ -1,11 +1,35 @@
 export default class Address {
     
-    _city: string = "";
-    _zip: string = "";
+    _street: string;
+    _number: number;
+    _zip: string;
+    _city: string;
 
 
-    constructor(city: string, zip:string) {
-        this._city = city;
+    constructor(street: string, number: number, city: string, zip:string) {
+        this._street = city;
+        this._number = number;
         this._zip = zip;
+        this._city = city;
+
+        this.validate();
+    }
+
+    validate() {
+        if (this._street.length === 0) {
+            throw new Error("Street is required");
+        }
+
+        if (this._number === 0) {
+            throw new Error("Number should be more than zero");
+        }
+
+        if (this._zip.length === 0) {
+            throw new Error("Zip is required");
+        }
+        
+        if (this._city.length === 0) {
+            throw new Error("City is required");
+        }        
     }
 }
