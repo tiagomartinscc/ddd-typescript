@@ -43,6 +43,17 @@ describe("Custumer unit tests", () => {
         const custumer = new Custumer("123", "Tiago");
         custumer.deactivate();
         expect(custumer.isActive()).toBe(false);
-    });     
+    });
+
+    it("should add reward points", () => {
+        const custumer = new Custumer("123", "Tiago");
+        expect(custumer.rewardPoints).toBe(0);
+
+        custumer.addRewardPoints(10);
+        expect(custumer.rewardPoints).toBe(10);
+        
+        custumer.addRewardPoints(10);
+        expect(custumer.rewardPoints).toBe(20);
+    });        
 
 });
