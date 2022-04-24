@@ -3,14 +3,14 @@ import OrderItem from "./order_item";
 export default class Order {
     private _id: string;
     // Agregado diferente usa o ID
-    private _custumerId: string;
+    private _customerId: string;
     // Mesmo agregado, usa o objeto
     private _items: OrderItem[];
     private _total: number;
 
-    constructor(id: string, custumerId:string, items: OrderItem[]) {
+    constructor(id: string, customerId:string, items: OrderItem[]) {
         this._id = id;
-        this._custumerId = custumerId;
+        this._customerId = customerId;
         this._items = items;
         this._total = this.total();
         this.validate();
@@ -21,8 +21,8 @@ export default class Order {
             throw new Error("ID is required");
         }
 
-        if (this._custumerId.length === 0) {
-            throw new Error("CustumerId is required");
+        if (this._customerId.length === 0) {
+            throw new Error("CustomerId is required");
         }
 
         if (this._items.length === 0) {

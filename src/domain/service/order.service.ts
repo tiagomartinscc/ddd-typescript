@@ -1,4 +1,4 @@
-import Custumer from "../entity/custumer";
+import customer from "../entity/customer";
 import Order from "../entity/order";
 import OrderItem from "../entity/order_item";
 import {v4 as uuid} from "uuid";
@@ -9,13 +9,13 @@ export default class OrderService {
         return orders.reduce((acc, order) => acc + order.total(), 0);
     }
 
-    static placeOrder(custumer: Custumer, items: OrderItem[]): Order {
+    static placeOrder(customer: customer, items: OrderItem[]): Order {
         if (OrderItem.length === 0) {
             throw new Error("Order must have at least one item");
         }
 
-        const order = new Order(uuid(), custumer.id, items);
-        custumer.addRewardPoints(order.total() / 2);
+        const order = new Order(uuid(), customer.id, items);
+        customer.addRewardPoints(order.total() / 2);
         return order;
     }
 }

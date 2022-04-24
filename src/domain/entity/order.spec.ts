@@ -12,7 +12,7 @@ describe("Order unit tests", () => {
     it("should throw error when id is empty", () => {
         expect(() => {
             const order = new Order("1", "", []);
-        }).toThrowError("CustumerId is required");
+        }).toThrowError("CustomerId is required");
     });
 
     it("should throw error when id is empty", () => {
